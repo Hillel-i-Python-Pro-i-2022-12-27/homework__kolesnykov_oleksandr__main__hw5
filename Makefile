@@ -29,17 +29,17 @@ pre-commit-run-all:
 
 d-run:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
-	docker-compose up --build
+		docker-compose up --build
 
 .PHONY: d-purge
 
 d-purge:
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
-	docker-compose down --volumes --remove-orphans --rmi local --timeout 0
+		docker-compose down --volumes --remove-orphans --rmi local --timeout 0
 
 .PHONY: d-stop
 	@COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 \
-	docker-compose down
+		docker-compose down
 
 .PHONY: d-homework-i-run
 # Make all actions needed for run homework from zero.

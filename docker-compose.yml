@@ -4,3 +4,7 @@ version: '3.8'
 services:
   app:
     build: .
+    volumes:
+      - ./text_data:/wd/text_data:ro
+      - ./files_output:/wd/files_output:rw
+    user: "1000"

@@ -1,0 +1,1 @@
+from .paths import ROOT_PATH, PATH_TO_TEXT_DATA, PATH_TO_FILES_OUTPUT

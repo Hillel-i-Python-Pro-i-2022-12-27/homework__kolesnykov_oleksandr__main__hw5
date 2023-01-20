@@ -162,5 +162,6 @@ cython_debug/
 
 text_data/*
 !text_data/.gitkeep
+!text_data/test.py
 files_output/*
 !files_output/.gitkeep
