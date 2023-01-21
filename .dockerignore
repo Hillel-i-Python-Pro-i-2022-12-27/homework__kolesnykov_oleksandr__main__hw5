@@ -7,4 +7,6 @@
 !main.py
 !requirements.txt
 !files_output
+!files_output/.gitkeep
 !files_input
+!files_input/.gitkeep
