@@ -6,7 +6,6 @@ def write_data_in_file(data, file):
 
         with open(file, "w") as file_to_write:
 
-            for string in strings:
-                file_to_write.write(string)
+            file_to_write.writelines(strings)
 
     print(f"Запись всех данных из файла \n{data} \nв файл \n{file} \nпрошла успешно" + "\n")
