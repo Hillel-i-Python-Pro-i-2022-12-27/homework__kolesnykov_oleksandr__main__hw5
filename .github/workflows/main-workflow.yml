@@ -1,37 +1,29 @@
-repos:
-  - repo: local
-    hooks:
-      - id: pyupgrade
-        name: pyupgrade
-        entry: pyupgrade
-        args: [
-          "--py311-plus"
-        ]
-        language: system
-        types:
-          - python
+name: Main workflow
 
-      - id: autoflake
-        name: autoflake
-        entry: autoflake
-        language: system
-        exclude: |
-          (?x)^(
-              .*/__init__.py
-          )$
-        types:
-          - python
+on: [ push, pull_request ]
 
-      - id: black
-        name: black
-        entry: black
-        language: system
-        types:
-          - python
+jobs:
+  main:
+    runs-on: ubuntu-22.04
 
-      - id: flake8
-        name: flake8
-        entry: flake8
-        language: system
-        types:
-          - python
+    steps:
+      # Need this for any work with repository.
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --requirement requirements.txt
+      - name: Upgrade syntax
+        run: |
+          pyupgrade
+      - name: Make autoformatting
+        run: |
+          black ./
+      - name: Check codestyle
+        run: |
+          flake8 ./
