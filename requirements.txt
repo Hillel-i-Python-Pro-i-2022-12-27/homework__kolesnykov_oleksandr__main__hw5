@@ -8,3 +8,5 @@ autoflake==2.0.0
 pre-commit==2.21.0
 #Upgrade syntax.
 pyupgrade==3.3.1
+#web requests
+requests==2.28.2

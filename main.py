@@ -1,6 +1,7 @@
 from application import work_with_files
 from application import project_paths
 from application import users_generator
+from application import astronauts_info
 
 
 if __name__ == "__main__":
@@ -11,3 +12,5 @@ if __name__ == "__main__":
     # generator = users_generator.create_users_generator()  # создастся генератор 100 случайных имён
     print(*users_generator.get_random_users_email(generator), sep="\n")  # распечатается генератор 10 случайных имён
     # print(*users_generator.get_random_users_email(generator), sep='\n') # распечатается генератор 100 случайных имён
+    print()
+    print(astronauts_info.get_info())
