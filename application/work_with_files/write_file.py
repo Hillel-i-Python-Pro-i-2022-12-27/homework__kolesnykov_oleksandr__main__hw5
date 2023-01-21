@@ -9,4 +9,4 @@ def write_data_in_file(data, file):
             for string in strings:
                 file_to_write.write(string)
 
-    print(f"Запись всех данных из файла \n{data} \nв файл \n{file} \nпрошла успешно")
+    print(f"Запись всех данных из файла \n{data} \nв файл \n{file} \nпрошла успешно" + "\n")

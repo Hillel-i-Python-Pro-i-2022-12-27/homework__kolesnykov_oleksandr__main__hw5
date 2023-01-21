@@ -15,4 +15,4 @@ def create_users_generator(count=100):
 def get_random_users_email(users_generator=create_users_generator()):
 
     for user in users_generator:
-        yield user + choice(mailboxes)
+        yield user + " example" + choice(mailboxes)
