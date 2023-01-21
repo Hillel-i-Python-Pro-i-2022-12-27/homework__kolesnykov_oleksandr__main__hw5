@@ -160,8 +160,7 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-text_data/*
-!text_data/.gitkeep
-!text_data/test.py
+files_input/*
+!files_input/.gitkeep
 files_output/*
 !files_output/.gitkeep

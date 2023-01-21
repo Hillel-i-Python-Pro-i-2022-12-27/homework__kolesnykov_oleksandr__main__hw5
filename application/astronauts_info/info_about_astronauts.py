@@ -8,6 +8,7 @@ def make_json_request():
     if response.status_code == 200:
         response = response.json()
         return response
+
     return f"Что-то пошло не так, код проблемы: {response.status_code}"
 
 
