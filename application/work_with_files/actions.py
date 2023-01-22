@@ -14,10 +14,16 @@ def write_data_in_file(data, file):
 
     with open(data) as opened_file:
 
+        read_logger = get_core_logger("read_logger")
+        read_logger.info(f"Reading file {data}")
+
         strings = opened_file.readlines()
 
         with open(file, "w") as file_to_write:
 
+            write_logger = get_core_logger("write_logger")
+            write_logger.info(f"Writing data to file {file}")
+
             file_to_write.writelines(strings)
 
-    print(f"Запись всех данных из файла \n{data} \nв файл \n{file} \nпрошла успешно" + "\n")
+            write_logger.info("Successfully\n")

@@ -8,8 +8,8 @@ from application.work_with_files.actions import read_file, write_data_in_file
 
 def main_func():
 
-    print(read_file(PATH_TO_FILES_INPUT) + "\n")
-    write_data_in_file(PATH_TO_FILES_INPUT, PATH_TO_FILES_OUTPUT)
+    print(read_file(PATH_TO_FILES_INPUT.joinpath("example.txt")) + "\n")
+    write_data_in_file(PATH_TO_FILES_INPUT.joinpath("example.txt"), PATH_TO_FILES_OUTPUT.joinpath("recorded_data.txt"))
     generator = create_users_generator(5)  # создастся генератор 10ти случайных имён
     print(*get_random_users_email(generator), sep="\n")  # распечатается генератор 10 случайных имейлов
     print()
