@@ -1,11 +1,17 @@
+from application.logging.loggers import get_core_logger
 import requests
+
+
+astronauts_api = "http://api.open-notify.org/astros.json"
 
 
 def make_json_request():
 
-    response = requests.get("http://api.open-notify.org/astros.json")
+    read_logger = get_core_logger("read_logger")
+    response = requests.get(astronauts_api)
 
     if response.status_code == 200:
+        read_logger.info(f"Reading data from {astronauts_api}")
         response = response.json()
         return response
 

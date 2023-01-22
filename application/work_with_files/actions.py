@@ -1,7 +1,12 @@
+from application.logging.loggers import get_core_logger
+
+
 def read_file(path_to_file):
 
+    read_logger = get_core_logger("read_logger")
+
     with open(path_to_file) as file:
-        print(f"Читаю содержимое файла {path_to_file}...")
+        read_logger.info(f"Reading file {path_to_file}")
         return file.read()
 
 

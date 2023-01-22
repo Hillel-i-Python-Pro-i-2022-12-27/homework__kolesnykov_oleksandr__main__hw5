@@ -5,12 +5,8 @@ from application import astronauts_info
 from application.find_average.find_average import find_average_weight, find_average_height, url
 from application.logging.init_logging import init_logging
 
-# from application.logging.loggers import get_core_logger
-
 
 def main_func():
-
-    # logger = get_core_logger()
 
     print(read_file(PATH_TO_FILES_INPUT) + "\n")
     write_data_in_file(PATH_TO_FILES_INPUT, PATH_TO_FILES_OUTPUT)

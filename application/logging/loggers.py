@@ -1,5 +1,5 @@
 import logging
 
 
-def get_core_logger():
-    return logging.getLogger("core")
+def get_core_logger(name="core"):
+    return logging.getLogger(name)
