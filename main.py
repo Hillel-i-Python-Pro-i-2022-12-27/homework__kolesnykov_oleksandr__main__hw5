@@ -3,9 +3,14 @@ from application.project_paths.paths import PATH_TO_FILES_INPUT, PATH_TO_FILES_O
 from application.users_generator.users_generator import create_users_generator, get_random_users_email
 from application import astronauts_info
 from application.find_average.find_average import find_average_weight, find_average_height, url
+from application.logging.init_logging import init_logging
+
+# from application.logging.loggers import get_core_logger
 
 
-if __name__ == "__main__":
+def main_func():
+
+    # logger = get_core_logger()
 
     print(read_file(PATH_TO_FILES_INPUT) + "\n")
     write_data_in_file(PATH_TO_FILES_INPUT, PATH_TO_FILES_OUTPUT)
@@ -16,3 +21,8 @@ if __name__ == "__main__":
     print()
     print(find_average_height(url))
     print(find_average_weight(url))
+
+
+if __name__ == "__main__":
+    init_logging()
+    main_func()
