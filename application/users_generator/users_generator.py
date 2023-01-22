@@ -12,7 +12,10 @@ def create_users_generator(count=100):
     return users
 
 
-def get_random_users_email(users_generator=create_users_generator()):
+def get_random_users_email(generator=None):
 
-    for user in users_generator:
-        yield user + " example" + choice(mailboxes)
+    if generator is None:
+        generator = create_users_generator()
+
+    for user in generator:
+        yield f"{user} example{choice(mailboxes)}"
