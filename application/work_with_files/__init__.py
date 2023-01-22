@@ -1,2 +1,1 @@
-from .read_file import read_file
-from .write_file import write_data_in_file
+from .actions import read_file, write_data_in_file
