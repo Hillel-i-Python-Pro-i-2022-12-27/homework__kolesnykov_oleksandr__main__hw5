@@ -5,6 +5,6 @@ services:
   app:
     build: .
     volumes:
-      - ./files_input:/wd/files_input:ro
+      - ./files_input:/wd/files_input:rw
       - ./files_output:/wd/files_output:rw
     user: "1000"
