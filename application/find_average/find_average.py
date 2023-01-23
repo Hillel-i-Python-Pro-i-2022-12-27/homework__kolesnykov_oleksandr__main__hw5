@@ -1,41 +1,34 @@
+import csv
 from application.logging.loggers import get_core_logger
-import requests
+from application.project_paths.paths import PATH_TO_CSV
 
 
-url = "https://drive.google.com/uc?export=download&id=1yM0a4CSf0iuAGOGEljdb7qcWyz82RBxl"
-
-
-def find_average_height(page):
+def find_average_parameters(path_to_csv_file):
 
     read_logger = get_core_logger("read_logger")
-    response = requests.get(page)
 
-    if response.status_code == 200:
-        read_logger.info(f"Reading data from {url}")
-        text = response.text
-        text = text.split("\n")[1:]
-        height_list = [float(height.split(", ")[1]) for height in text if height]
+    with open(path_to_csv_file) as csv_file:
 
-        return f"""Всего данных: {len(height_list)}
-средний рост в см: {round((sum(height_list) / len(height_list)) * 2.54, 2)}
-        """
+        read_logger.info(f"Reading file {path_to_csv_file}")
 
-    return f"Что-то пошло не так, код ошибки: {page.status_code}"
+        height_inches_list = []
+        weight_pounds_list = []
+
+        reader = csv.DictReader(csv_file)
+
+        for row in reader:
+            height_inches_list.append(float(row["Height(Inches)"]))
+            weight_pounds_list.append(float(row["Weight(Pounds)"]))
+
+        average_height_inches = sum(height_inches_list) / len(height_inches_list)
+        average_weight_pounds = sum(weight_pounds_list) / len(weight_pounds_list)
+
+    return average_height_inches, average_weight_pounds
 
 
-def find_average_weight(page):
+def get_formatted_parameters():
+    average_height, average_weight = find_average_parameters(PATH_TO_CSV)
+    height_sm = round((average_height * 2.54), 2)
+    weight_kg = round((average_weight * 0.453592), 2)
 
-    read_logger = get_core_logger("read_logger")
-    response = requests.get(page)
-
-    if response.status_code == 200:
-        read_logger.info(f"Reading data from {url}")
-        text = response.text
-        text = text.split("\n")[1:]
-        weight_list = [float(weight.split(", ")[2]) for weight in text if weight]
-
-        return f"""Всего данных: {len(weight_list)}
-средний вес в кг: {round((sum(weight_list) / len(weight_list)) * 0.453592, 2)}
-        """
-
-    return f"Что-то пошло не так, код ошибки: {page.status_code}"
+    return f"Средний рост в см: {height_sm}, средний вес в кг: {weight_kg}"
