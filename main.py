@@ -1,9 +1,9 @@
 from application import astronauts_info
-from application.find_average.find_average import find_average_weight, find_average_height, url
 from application.logging.init_logging import init_logging
 from application.project_paths.paths import PATH_TO_FILES_INPUT, PATH_TO_FILES_OUTPUT
 from application.users_generator.users_generator import create_users_generator, get_random_users_email
 from application.work_with_files.actions import read_file, write_data_in_file, create_new_txt_file
+from application.find_average.find_average import get_formatted_parameters
 
 
 def main_func():
@@ -18,8 +18,7 @@ def main_func():
     print()
     print(astronauts_info.get_info())
     print()
-    print(find_average_height(url))
-    print(find_average_weight(url))
+    print(get_formatted_parameters())
 
 
 if __name__ == "__main__":
